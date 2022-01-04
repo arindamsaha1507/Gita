@@ -2,7 +2,7 @@ import pandas as pd
 from read_shloka import create_list
 
 
-n_shloka = 280
+n_shloka = 310
 
 ff = open('pada_table.csv', 'w')
 
