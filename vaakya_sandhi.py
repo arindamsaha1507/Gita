@@ -10,6 +10,8 @@ def vaakya_sandhi(jj, mm = None):
     prakriya = pd.DataFrame(columns=['स्थिति', 'सूत्र'])
     sandhi_summary = pd.DataFrame(columns=['पद समूह', 'सूत्राणि', 'संधि-कृत रूप'])
 
+    qaz = open('gita_recreated.txt', 'a')
+
     dd = []
 
     if mm == None:
@@ -73,7 +75,7 @@ def vaakya_sandhi(jj, mm = None):
                 elif pv[-1] in expand_pratyahaara('इक्') and sv[0] in expand_pratyahaara('अच्'):
                     df = इको_यणचि(df)
         else:
-            if (primary == 'सस्' or primary == 'एषस्') and sv[0] in expand_pratyahaara('हल्') and secondary not in avasaana:
+            if (mm[ii] == 'सस्' or mm[ii] == 'एषस्') and sv[0] in expand_pratyahaara('हल्') and secondary not in avasaana:
                 df = एतत्तदोः_सुलोपोऽकोरनञ्समासे_हलि(df)
             elif pv[-1] == 'स्':
                 df = ससजुषो_रुः(df)
@@ -103,6 +105,10 @@ def vaakya_sandhi(jj, mm = None):
 
                 elif pv[-1] == 'न्' and sv[0] in expand_pratyahaara('छव्'):
                     df = नश्छव्यप्रशान्(df)
+                elif pv[-1] == 'न्' and sv[0] == 'ल्':
+                    df = तोर्लि(df)
+                elif pv[-1] == 'न्' and sv[0] in ['श्', 'च्', 'छ्', 'ज्', 'झ्', 'ञ्']:
+                    df = स्तोः_श्चुना_श्चुः(df)
 
                 elif pv[-1] in expand_pratyahaara('हल्') and sv[0] in expand_pratyahaara('अच्'):
 
@@ -151,16 +157,21 @@ def vaakya_sandhi(jj, mm = None):
     print(get_shabda(ee1))
     print(get_shabda(ee2))
 
+    qaz.write(get_shabda(ee1) + '\n')
+    qaz.write(get_shabda(ee2) + '\n\n')
+
     # print(prakriya)
     # print(sandhi_summary)
 
     prakriya.to_csv('Prakriya/prakriya_'+str(jj+1)+'.csv', index=False)
     sandhi_summary.to_csv('Sandhi/sandhi_summary_'+str(jj+1)+'.csv', index=False)
 
+    qaz.close()
+
     return [ee1, ee2, sandhi_summary, prakriya]
 
 
 if __name__ == '__main__':
 
-    for jj in range(77):
+    for jj in range(280):
         vaakya_sandhi(jj)

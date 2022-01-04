@@ -287,7 +287,7 @@ def झलां_जशोऽन्ते(df):
         s = aadesh(s, ii-1, aa)
 
 
-    df = post_processing(df, s, 'झलां_जशोऽन्ते', '8.2.39')
+    df = post_processing(df, s, 'झलां जशोऽन्ते', '8.2.39')
 
     if ' ' in s:
 
@@ -313,6 +313,12 @@ def झलां_जशोऽन्ते(df):
 
         if s[ii+1] in expand_pratyahaara('खर्'):
             df = खरि_च(df)
+
+        if s[ii+1] == 'ल्':
+            df = तोर्लि(df)
+
+        if s[ii-1] in expand_pratyahaara('झय्') and s[ii+1] == 'ह्':
+            df = झयो_होऽन्यतरस्याम्(df)
 
     elif ' ' not in s:
         df = वाऽवसाने(df)
@@ -570,7 +576,7 @@ def यरोऽनुनासिकेऽनुनासिको_वा(df):
         if s[ii-1] == 'ब्':
             s = aadesh(s, ii-1, 'म्')
 
-    df = post_processing(df, s, 'यरोऽनुनासिकेऽनुनासिको_वा', '8.4.45')
+    df = post_processing(df, s, 'यरोऽनुनासिकेऽनुनासिको वा', '8.4.45')
 
     return df
 
@@ -622,6 +628,46 @@ def वाऽवसाने(df):
     s = aadesh(s, ii-1, aa)
 
     df = post_processing(df, s, 'वाऽवसाने', '8.4.56')
+
+    return df
+
+def तोर्लि(df):
+    
+    s = pre_processing(df)
+
+    ii = s.index(' ')
+
+    if s[ii+1] == 'ल्':
+        if s[ii-1] == 'न्':
+            s = aadesh(s, ii-1, 'ल्ँ')
+        if s[ii-1] == 'द्':
+            s = aadesh(s, ii-1, 'ल्')
+
+    df = post_processing(df, s, 'तोर्लि', '8.4.60')
+
+    return df
+
+def झयो_होऽन्यतरस्याम्(df):
+
+    s = pre_processing(df)
+
+    ii = s.index(' ')
+    if s[ii-1] in expand_pratyahaara('झय्') and s[ii+1] == 'ह्':
+        if s[ii-1] == 'ग्':
+            aa = 'घ्'
+        if s[ii-1] == 'ज्':
+            aa = 'झ्'
+        if s[ii-1] == 'ड्':
+            aa = 'ढ्'
+        if s[ii-1] == 'द्':
+            aa = 'ध्'
+        if s[ii-1] == 'ब्':
+            aa = 'भ्'
+
+        s = aadesh(s, ii+1, aa)
+        del s[ii]
+
+    df = post_processing(df, s, 'झयो होऽन्यतरस्याम्', '8.4.62')
 
     return df
 
