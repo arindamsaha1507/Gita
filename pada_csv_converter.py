@@ -2,7 +2,7 @@ import pandas as pd
 from read_shloka import create_list
 
 
-n_shloka = 310
+n_shloka = 338
 
 ff = open('pada_table.csv', 'w')
 
@@ -136,7 +136,7 @@ for jj in range(n_shloka):
 
     ff.close()
 
-print(shlokas)
+# print(shlokas)
 
 #################################################################
 
@@ -160,4 +160,4 @@ print(len(nn))
 
 print(len(set(nn)))
 
-print(len(list(dict.fromkeys(nn))))
+print(list(dict.fromkeys(nn)))
