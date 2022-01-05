@@ -175,6 +175,6 @@ def vaakya_sandhi(jj, mm = None):
 
 if __name__ == '__main__':
 
-    for jj in range(338):
+    for jj in range(372):
         print(jj)
         vaakya_sandhi(jj)
