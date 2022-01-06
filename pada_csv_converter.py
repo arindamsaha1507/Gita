@@ -2,7 +2,7 @@ import pandas as pd
 from read_shloka import create_list
 
 
-n_shloka = 372
+n_shloka = 414
 
 ff = open('pada_table.csv', 'w')
 
@@ -156,8 +156,8 @@ for jj in range(n_shloka):
         if mm[ii] not in ['।', '॥']:
             nn.append(mm[ii])
 
+print(list(dict.fromkeys(nn)))
+
 print(len(nn))
 
 print(len(set(nn)))
-
-print(list(dict.fromkeys(nn)))
