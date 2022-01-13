@@ -4,7 +4,7 @@ from read_shloka import create_list
 from vinyaasa import *
 
 
-n_shloka = 489
+n_shloka = 524
 
 ff = open('pada_table.csv', 'w')
 

@@ -102,8 +102,9 @@ def vaakya_sandhi(jj, mm = None):
                     df = खरवसानयोर्विसर्जनीयः(df)
                 elif secondary in avasaana:
                     pass
-                elif pv[-1] == 'म्' and sv[0] in expand_pratyahaara('हल्'):
-                    df = मोऽनुस्वारः(df)
+                elif pv[-1] == 'म्' and secondary not in avasaana:
+                    if sv[0] in expand_pratyahaara('हल्'):
+                        df = मोऽनुस्वारः(df)
 
                 elif pv[-1] == 'न्' and sv[0] in expand_pratyahaara('छव्'):
                     df = नश्छव्यप्रशान्(df)
@@ -175,6 +176,6 @@ def vaakya_sandhi(jj, mm = None):
 
 if __name__ == '__main__':
 
-    for jj in range(489):
+    for jj in range(524):
         print(jj)
         vaakya_sandhi(jj)
