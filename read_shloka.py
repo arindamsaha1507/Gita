@@ -33,4 +33,4 @@ def get_shloka_number(ch, sh):
 
 
 if __name__ == '__main__':
-    print(get_shloka_number(18, 78))
+    print(create_list())
